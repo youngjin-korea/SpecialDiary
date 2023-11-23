@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+}
+.DiaryEditor {
+  border: 1px solid black;
+  text-align: center;
+  padding: 20px;
+}
+.DiaryEditor input,
+textarea {
+  margin-bottom: 20px;
+  width: 500px;
+  padding: 10px;
+}
+.DiaryEditor textarea {
+  height: 150px;
+}
+.DiaryEditor select {
+  margin-bottom: 20px;
+  width: 300px;
+  padding: 10px;
+}
+.DiaryEditor button {
+  width: 500px;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border-style: none;
+  font-size: medium;
+  font-weight: bold;
+  color: beige;
+  opacity: 0.8;
+  background-color: darkslateblue;
+}
+.DiaryEditor button:hover {
+  opacity: 1;
+}
