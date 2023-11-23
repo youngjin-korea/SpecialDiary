@@ -64,10 +64,15 @@ function App() {
     setData([newItem, ...data]);
   };
 
+  const onDelete = (id) => {
+    const newList = data.filter((it) => it.id !== id);
+    setData(newList);
+  };
+
   return (
     <div className="App">
       <DiaryEditor onCreate={onCreate} />
-      <DiaryList diaryList={data} />
+      <DiaryList diaryList={data} onDelete={onDelete} />
     </div>
   );
 }
