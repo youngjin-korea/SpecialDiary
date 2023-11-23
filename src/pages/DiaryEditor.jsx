@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 const DiaryEditor = () => {
   const [state, setState] = useState({ author: "", content: "", emotion: 1 });
+
+  const authorRef = useRef();
+  const contentRef = useRef();
 
   const handleChangeState = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
   };
   const handleSubmit = () => {
+    if (state.author.length < 1) {
+      authorRef.current.focus();
+      return;
+    }
+    if (state.content.length < 1) {
+      contentRef.current.focus();
+      return;
+    }
     alert("저장 성공!");
     console.log(state);
   };
+
   return (
     <div className="DiaryEditor">
       <h2>일기 쓰기 🔑</h2>
@@ -19,6 +31,7 @@ const DiaryEditor = () => {
           name="author"
           value={state.author}
           onChange={handleChangeState}
+          ref={authorRef}
         />
       </div>
       <div>
@@ -27,6 +40,7 @@ const DiaryEditor = () => {
           name="content"
           value={state.content}
           onChange={handleChangeState}
+          ref={contentRef}
         />
       </div>
       <div>
