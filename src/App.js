@@ -2,6 +2,7 @@ import DiaryEditor from "./pages/DiaryEditor";
 import DiaryList from "./pages/DiaryList";
 import "./App.css";
 import { useState, useRef, useEffect, useMemo } from "react";
+import Optimize from "./pages/Optimize";
 
 function App() {
   const [data, setData] = useState([]);
@@ -56,17 +57,19 @@ function App() {
   };
 
   const getDiaryAnalysis = useMemo(() => {
-    console.log("분석실행");
     const goodCount = data.filter((it) => it.emotion >= 3).length;
     const badCount = data.length - goodCount;
     const goodRatio = (goodCount / data.length) * 100;
     return { goodCount, badCount, goodRatio };
   }, [data.length]);
+  // data.length가 변할때만 return 윗 부분 다시 연산, data.length가 변하지 않으면 연산 없이 리턴값 계속 저장.
+  // (memorization: 한번한 같은 연산의 값을 기억하고 있으며 변화가 없을 시 같은 값 재사용)
 
   const { goodCount, badCount, goodRatio } = getDiaryAnalysis;
 
   return (
     <div className="App">
+      <Optimize />
       <DiaryEditor onCreate={onCreate} />
       <div>전체 일기 개수: {data.length}</div>
       <div>기분 좋은 일기 개수: {goodCount}</div>
