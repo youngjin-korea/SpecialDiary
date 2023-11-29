@@ -1,8 +1,7 @@
 import DiaryEditor from "./pages/DiaryEditor";
 import DiaryList from "./pages/DiaryList";
 import "./App.css";
-import { useState, useRef, useEffect, useMemo } from "react";
-import Optimize from "./pages/Optimize";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 
 function App() {
   const [data, setData] = useState([]);
@@ -30,7 +29,7 @@ function App() {
     dummy();
   }, []);
 
-  const onCreate = (author, content, emotion) => {
+  const onCreate = useCallback((author, content, emotion) => {
     const created_date = new Date().getTime();
     const newItem = {
       author,
@@ -40,8 +39,8 @@ function App() {
       id: dataId.current,
     };
     dataId.current += 1;
-    setData([newItem, ...data]);
-  };
+    setData((data) => [newItem, ...data]);
+  }, []);
 
   const onDelete = (id) => {
     const newList = data.filter((it) => it.id !== id);
@@ -69,12 +68,21 @@ function App() {
 
   return (
     <div className="App">
-      <Optimize />
       <DiaryEditor onCreate={onCreate} />
-      <div>전체 일기 개수: {data.length}</div>
-      <div>기분 좋은 일기 개수: {goodCount}</div>
-      <div>기분 나쁜 일기 개수: {badCount}</div>
-      <div>기분 좋은 일기 비율: {goodRatio}%</div>
+      <div className="Analysis">
+        <div>
+          전체 일기 개수: <span>{data.length}</span>
+        </div>
+        <div>
+          기분 좋은 일기 개수: <span>{goodCount}</span>
+        </div>
+        <div>
+          기분 나쁜 일기 개수: <span>{badCount}</span>
+        </div>
+        <div>
+          기분 좋은 일기 비율: <span>{goodRatio}%</span>
+        </div>
+      </div>
       <DiaryList diaryList={data} onDelete={onDelete} onEdit={onEdit} />
     </div>
   );

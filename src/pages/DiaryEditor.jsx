@@ -1,6 +1,9 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const DiaryEditor = ({ onCreate }) => {
+  useEffect(() => {
+    console.log("에디터 마운트");
+  }, []);
   const [state, setState] = useState({ author: "", content: "", emotion: 1 });
 
   const authorRef = useRef();

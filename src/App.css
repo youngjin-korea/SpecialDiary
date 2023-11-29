@@ -63,3 +63,16 @@ textarea {
 .DiaryItem .content {
   margin: 30px 0;
 }
+
+.Analysis {
+  margin: 10px;
+  height: 80px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.Analysis span {
+  color: brown;
+  font-weight: bold;
+}
