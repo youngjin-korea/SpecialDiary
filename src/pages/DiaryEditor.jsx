@@ -1,9 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useContext } from "react";
+import { MemoizedDispatched } from "../App";
 
-const DiaryEditor = ({ onCreate }) => {
+const DiaryEditor = () => {
   // useEffect(() => {
   //   console.log("에디터 마운트");
   // }, []);
+  const { onCreate } = useContext(MemoizedDispatched);
   const [state, setState] = useState({ author: "", content: "", emotion: 1 });
 
   const authorRef = useRef();

@@ -1,17 +1,13 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
+import { MemoizedDispatched } from "../App";
 
-const DiaryItem = ({
-  author,
-  content,
-  created_date,
-  emotion,
-  id,
-  onDelete,
-  onEdit,
-}) => {
-  useEffect(() => {
-    console.log(`${id} 번째 일기`);
-  });
+const DiaryItem = ({ author, content, created_date, emotion, id }) => {
+  // useEffect(() => {
+  //   console.log(`${id} 번째 일기`);
+  // });
+
+  const { onEdit, onDelete } = useContext(MemoizedDispatched);
+
   const [isEdit, setIsEdit] = useState(false);
   const toggleIsEdit = () => setIsEdit(!isEdit);
 
