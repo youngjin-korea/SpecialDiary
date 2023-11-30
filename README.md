@@ -21,6 +21,4 @@ App.js에서 관리하는 상태 데이터를 DiaryList.js 컴포넌트 내부�
 
 filter() 메소드를 활용하여 해당되는 삭제 할 아이템의 id 와 일치하는 값은 걸러내고 아닌 값 만을 모아서 상태 데이터를 변경하는 방식으로 구현하였습니다.
 
-![화면 기록 2023-11-30 오후 7 47 14](https://github.com/youngjin-korea/SpecialDiary/assets/101031079/9d7344b3-f7ee-40a4-8a53-48a565a23a22)
-
-<img width="50%" src="https://github.com/youngjin-korea/SpecialDiary/assets/101031079/b4811700-69e9-4201-951f-8c1bfc0da0ea"/>
+![화면 기록 2023-11-30 오후 7 47 14](https://github.com/youngjin-korea/SpecialDiary/assets/101031079/c35abade-ade8-47ef-955f-a9aa2260e669)
