@@ -4,6 +4,8 @@ create, read, update, delete 기능이 있는 일기장 프로젝트 입니다.
 
 ## 기능 설명
 
+### `상태관리: Recoil`
+
 ### `CREATE`
 
 최상위 부모 컴포넌트 App.js에 저장할 상태 상태 데이터와 생성 함수를 만들어 편집의 기능을 하는 DiaryEditor.js로 props를 전달하여 이벤트가 일어나면 데이터의 상태가 변경 되도록 구현했습니다.
