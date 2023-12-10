@@ -1,9 +1,9 @@
 import DiaryItem from "./DiaryItem";
-import { useRecoilState } from "recoil";
+import { useRecoilValue } from "recoil";
 import { DiaryData } from "../recoil/atom";
 
 const DiaryList = () => {
-  const [data, setData] = useRecoilState(DiaryData);
+  const data = useRecoilValue(DiaryData);
 
   return (
     <div className="DiaryList">

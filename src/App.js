@@ -65,9 +65,7 @@ function App() {
 
   const { goodCount, badCount, goodRatio } = getDiaryAnalysis;
 
-  const memoizedDispatched = useMemo(() => {
-    return { onCreate, onDelete, onEdit };
-  }, []);
+  
 
   return (
     <div className="App">

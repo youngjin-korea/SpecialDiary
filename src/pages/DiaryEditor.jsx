@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef } from "react";
 import { useRecoilState } from "recoil";
 import { DiaryData } from "../recoil/atom";
 
