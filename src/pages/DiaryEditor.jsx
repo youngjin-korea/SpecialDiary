@@ -1,15 +1,25 @@
-import React, { useState, useRef, useContext } from "react";
-import { MemoizedDispatched } from "../App";
+import React, { useState, useRef, useCallback } from "react";
+import { useRecoilState } from "recoil";
+import { DiaryData } from "../recoil/atom";
 
 const DiaryEditor = () => {
-  // useEffect(() => {
-  //   console.log("에디터 마운트");
-  // }, []);
-  const { onCreate } = useContext(MemoizedDispatched);
   const [state, setState] = useState({ author: "", content: "", emotion: 1 });
-
+  const [data, setData] = useRecoilState(DiaryData);
   const authorRef = useRef();
   const contentRef = useRef();
+  const dataId = useRef(0);
+
+  const onCreate = (author, content, emotion) => {
+    const created_date = new Date().getTime();
+    const newItem = {
+      author,
+      content,
+      emotion,
+      created_date,
+    };
+    setData([newItem, ...data]);
+    dataId.current += 1;
+  };
 
   const handleChangeState = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });

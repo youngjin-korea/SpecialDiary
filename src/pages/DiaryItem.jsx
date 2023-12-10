@@ -1,12 +1,21 @@
-import React, { useContext, useRef, useState } from "react";
-import { MemoizedDispatched } from "../App";
+import React, { useRef, useState, useCallback } from "react";
+import { useRecoilState } from "recoil";
+import { DiaryData } from "../recoil/atom";
 
 const DiaryItem = ({ author, content, created_date, emotion, id }) => {
-  // useEffect(() => {
-  //   console.log(`${id} 번째 일기`);
-  // });
+  const [data, setData] = useRecoilState(DiaryData);
 
-  const { onEdit, onDelete } = useContext(MemoizedDispatched);
+  const onDelete = useCallback((id) => {
+    setData(data.filter((it) => it.id !== id));
+  }, []);
+
+  const onEdit = useCallback((targetId, newContent) => {
+    setData((data) =>
+      data.map((it) =>
+        it.id === targetId ? { ...it, content: newContent } : it
+      )
+    );
+  }, []);
 
   const [isEdit, setIsEdit] = useState(false);
   const toggleIsEdit = () => setIsEdit(!isEdit);

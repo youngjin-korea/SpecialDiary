@@ -1,25 +1,21 @@
-import React, { useContext } from "react";
 import DiaryItem from "./DiaryItem";
-import { DiaryDataContext } from "../App";
+import { useRecoilState } from "recoil";
+import { DiaryData } from "../recoil/atom";
 
 const DiaryList = () => {
-  const diaryList = useContext(DiaryDataContext);
+  const [data, setData] = useRecoilState(DiaryData);
 
   return (
     <div className="DiaryList">
       <h2>나의 일기 리스트</h2>
-      <h4>{diaryList.length}개의 일기가 있습니다.</h4>
+      <h4>{data.length}개의 일기가 있습니다.</h4>
       <div>
-        {diaryList.map((it) => (
+        {data.map((it) => (
           <DiaryItem key={it.id} {...it} />
         ))}
       </div>
     </div>
   );
-};
-
-DiaryList.defaultProps = {
-  diaryList: [],
 };
 
 export default DiaryList;
